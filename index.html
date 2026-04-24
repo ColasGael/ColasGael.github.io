@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gael Colas — Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Custom properties ── */
+    :root {
+      --bg:             #0d1117;
+      --surface:        #161b22;
+      --surface-2:      #21262d;
+      --border:         #30363d;
+      --text-primary:   #e6edf3;
+      --text-secondary: #8b949e;
+      --accent-heat:    #ff6b35;
+      --accent-paint:   #a78bfa;
+      --accent-concert: #34d399;
+      --accent-yt:      #f87171;
+      --accent-blue:    #58a6ff;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Background canvas ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s var(--ease-expo) 0.05s both;
+    }
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s var(--ease-expo) 0.15s both;
+    }
+    .hero-name .accent { color: var(--accent-blue); }
+    .hero-tag {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 42ch;
+      margin-bottom: 2.25rem;
+      animation: fadeUp 0.6s var(--ease-expo) 0.25s both;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 200ms ease, background 200ms ease, transform 200ms var(--ease-expo);
+      animation: fadeUp 0.6s var(--ease-expo) 0.35s both;
+    }
+    .hero-cta:hover { border-color: var(--accent-blue); background: var(--surface-2); transform: translateY(-2px); }
+
+    /* ── Projects section ── */
+    .projects-section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+      animation: fadeUp 0.6s var(--ease-expo) 0.45s both;
+    }
+    .section-heading {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 600px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: transform 350ms var(--ease-expo),
+                  box-shadow 350ms var(--ease-expo),
+                  border-color 200ms ease;
+    }
+    /* Gradient border via mask technique */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, var(--card-accent) 0%, transparent 60%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 350ms ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: transparent;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    }
+    .card:hover::before { opacity: 1; }
+
+    /* ── Card icon ── */
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      transition: transform 350ms var(--ease-expo);
+    }
+    .card:hover .card-icon { transform: scale(1.12) rotate(-4deg); }
+
+    /* ── Card text ── */
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Badges ── */
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 9px;
+      border-radius: 9999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* ── Card link ── */
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--card-accent);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 250ms ease, transform 250ms ease;
+    }
+    .card:hover .card-link { opacity: 1; transform: translateY(0); }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent-blue); }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Hero -->
+  <header class="hero">
+    <p class="hero-eyebrow">// hello, world</p>
+    <h1 class="hero-name">Gael <span class="accent">Colas</span></h1>
+    <p class="hero-tag">Software engineer building tools that automate the boring stuff.</p>
+    <a class="hero-cta" href="https://github.com/ColasGael" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.071 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+      </svg>
+      GitHub
+    </a>
+  </header>
+
+  <!-- Projects -->
+  <main>
+    <section class="projects-section">
+      <h2 class="section-heading">// projects</h2>
+      <div class="projects-grid">
+
+        <!-- Commute Heat Map -->
+        <article class="card" style="--card-accent: var(--accent-heat)">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2"  y="2"  width="13" height="13" rx="2" fill="#ff6b35" opacity="0.2"/>
+              <rect x="17" y="2"  width="13" height="13" rx="2" fill="#ff6b35" opacity="0.5"/>
+              <rect x="32" y="2"  width="13" height="13" rx="2" fill="#ff6b35" opacity="0.2"/>
+              <rect x="2"  y="17" width="13" height="13" rx="2" fill="#ff6b35" opacity="0.5"/>
+              <rect x="17" y="17" width="13" height="13" rx="2" fill="#ff6b35" opacity="1"/>
+              <rect x="32" y="17" width="13" height="13" rx="2" fill="#ff6b35" opacity="0.5"/>
+              <rect x="2"  y="32" width="13" height="13" rx="2" fill="#ff6b35" opacity="0.2"/>
+              <rect x="17" y="32" width="13" height="13" rx="2" fill="#ff6b35" opacity="0.5"/>
+              <rect x="32" y="32" width="13" height="13" rx="2" fill="#ff6b35" opacity="0.2"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Commute Heat Map</h3>
+          <p class="card-desc">Generates PNG heat maps of commute times across a geographic grid using Google Maps APIs.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">matplotlib</span>
+            <span class="badge">numpy</span>
+            <span class="badge">Google Maps</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/commute_heat_map" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Paint by Numbers -->
+        <article class="card" style="--card-accent: var(--accent-paint)">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="23" cy="28" rx="19" ry="15" fill="#a78bfa" opacity="0.12" stroke="#a78bfa" stroke-width="2"/>
+              <ellipse cx="34" cy="16" rx="5" ry="5" fill="#0d1117" stroke="#a78bfa" stroke-width="2"/>
+              <circle cx="12" cy="25" r="4"   fill="#f87171"/>
+              <circle cx="20" cy="36" r="4"   fill="#34d399"/>
+              <circle cx="30" cy="36" r="4"   fill="#a78bfa"/>
+              <circle cx="8"  cy="33" r="3.5" fill="#ff6b35"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Paint by Numbers</h3>
+          <p class="card-desc">Converts color images into paint-by-numbers templates using k-means clustering in CIELAB color space.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">PIL</span>
+            <span class="badge">scikit-image</span>
+            <span class="badge">k-means</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/paint_by_numbers" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Concert Planner -->
+        <article class="card" style="--card-accent: var(--accent-concert)">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="13" width="42" height="22" rx="3" fill="#34d399" opacity="0.12" stroke="#34d399" stroke-width="2"/>
+              <line x1="33" y1="13" x2="33" y2="35" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.65"/>
+              <ellipse cx="17" cy="30" rx="5" ry="3.5" fill="#34d399"/>
+              <line x1="22" y1="30" x2="22" y2="17" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="22" y1="17" x2="28" y2="19.5" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Concert Planner</h3>
+          <p class="card-desc">Builds a playlist of upcoming concerts from artists performing in your area.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">YouTube API</span>
+            <span class="badge">TicketMaster</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/concert_planner" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- YouTube Download -->
+        <article class="card" style="--card-accent: var(--accent-yt)">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="24" y1="6"  x2="24" y2="30" stroke="#f87171" stroke-width="3.5" stroke-linecap="round"/>
+              <polyline points="13,21 24,33 35,21" stroke="#f87171" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <line x1="9"  y1="41" x2="39" y2="41" stroke="#f87171" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card-title">YouTube Download</h3>
+          <p class="card-desc">CLI wrapper for youtube-dl to download playlists as MP3 or MP4 with minimal configuration.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">youtube-dl</span>
+            <span class="badge">CLI</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/youtube_download" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Built by <a href="https://github.com/ColasGael" target="_blank" rel="noopener">ColasGael</a> &middot; <span id="year"></span></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, dots;
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      function resize() {
+        w = canvas.width  = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        const spacing = 32;
+        dots = [];
+        for (let x = spacing / 2; x < w; x += spacing)
+          for (let y = spacing / 2; y < h; y += spacing)
+            dots.push({ x, y, phase: Math.random() * Math.PI * 2 });
+      }
+
+      function frame(t) {
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+          const alpha = 0.05 + 0.05 * Math.sin(t * 0.0007 + d.phase);
+          ctx.fillStyle = `rgba(88, 166, 255, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(frame);
+    }
+  </script>
+
+</body>
+</html>
