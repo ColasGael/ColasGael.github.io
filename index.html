@@ -195,6 +195,22 @@
       white-space: nowrap;
     }
 
+    /* ── Card preview image ── */
+    .card-preview {
+      margin: -1.75rem -1.75rem 1.25rem;
+      border-radius: 13px 13px 0 0;
+      overflow: hidden;
+      background: var(--surface-2);
+      aspect-ratio: 16/9; /* fallback before JS sets explicit height */
+      position: relative;
+      transition: height 450ms var(--ease-expo);
+    }
+    .card-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* ── Card link ── */
     .card-link {
       display: inline-flex;
@@ -259,6 +275,11 @@
 
         <!-- Commute Heat Map -->
         <article class="card" style="--card-accent: var(--accent-heat)">
+          <div class="card-preview">
+            <img src="https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/commute_heat_map/images/commute_heat_map_paris.png"
+                 alt="Commute heat map from Parc de Belleville, Paris"
+                 onerror="this.parentElement.remove()">
+          </div>
           <div class="card-icon" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="2"  y="2"  width="13" height="13" rx="2" fill="#ff6b35" opacity="0.2"/>
@@ -288,6 +309,12 @@
 
         <!-- Paint by Numbers -->
         <article class="card" style="--card-accent: var(--accent-paint)">
+          <div class="card-preview">
+            <img src="https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/paint_by_numbers/images/paint_by_numbers_snickers.png"
+                 alt="Paint-by-numbers result"
+                 style="position: absolute; bottom: 0; left: 0"
+                 onerror="this.src='https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/paint_by_numbers/images/paint_by_numbers_snickers.png';this.onerror=function(){this.parentElement.remove()}">
+          </div>
           <div class="card-icon" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="23" cy="28" rx="19" ry="15" fill="#a78bfa" opacity="0.12" stroke="#a78bfa" stroke-width="2"/>
