@@ -111,6 +111,7 @@
       color: var(--text-secondary);
       margin-bottom: 1.75rem;
     }
+    .section-subheading { margin-top: 3rem; }
     .projects-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -258,7 +259,7 @@
   <header class="hero">
     <p class="hero-eyebrow">// hello, fellow travelers</p>
     <h1 class="hero-name">Gael <span class="accent">Colas</span></h1>
-    <p class="hero-tag">Software engineer building tools that automate the boring stuff.</p>
+    <p class="hero-tag">A glimpse into the workspace of a tinkerer.</p>
     <a class="hero-cta" href="https://github.com/ColasGael" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.071 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
@@ -270,6 +271,8 @@
   <!-- Projects -->
   <main>
     <section class="projects-section">
+
+      <!-- ── Projects ── -->
       <h2 class="section-heading">// projects</h2>
       <div class="projects-grid">
 
@@ -278,7 +281,7 @@
           <div class="card-preview">
             <img src="https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/commute_heat_map/images/commute_heat_map_paris.png"
                  alt="Commute heat map from Parc de Belleville, Paris"
-                 onerror="this.parentElement.remove()">
+                 onerror="this.closest('.card-preview').remove()">
           </div>
           <div class="card-icon" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -294,12 +297,12 @@
             </svg>
           </div>
           <h3 class="card-title">Commute Heat Map</h3>
-          <p class="card-desc">Generates PNG heat maps of commute times across a geographic grid using Google Maps APIs.</p>
+          <p class="card-desc">Generates heat maps of commute times across a geographic grid using Google Maps APIs.</p>
           <div class="card-badges">
             <span class="badge">Python</span>
             <span class="badge">matplotlib</span>
             <span class="badge">numpy</span>
-            <span class="badge">Google Maps</span>
+            <span class="badge">Google Maps API</span>
           </div>
           <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/commute_heat_map" target="_blank" rel="noopener">
             View source
@@ -312,8 +315,8 @@
           <div class="card-preview">
             <img src="https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/paint_by_numbers/images/paint_by_numbers_snickers.png"
                  alt="Paint-by-numbers result"
-                 style="position: absolute; bottom: 0; left: 0"
-                 onerror="this.src='https://raw.githubusercontent.com/ColasGael/tool_box/main/tool_box/paint_by_numbers/images/paint_by_numbers_snickers.png';this.onerror=function(){this.parentElement.remove()}">
+                 data-anchor="bottom"
+                 onerror="this.closest('.card-preview').remove()">
           </div>
           <div class="card-icon" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -355,9 +358,210 @@
           <div class="card-badges">
             <span class="badge">Python</span>
             <span class="badge">YouTube API</span>
-            <span class="badge">TicketMaster</span>
+            <span class="badge">TicketMaster API</span>
           </div>
           <a class="card-link" href="https://github.com/ColasGael/tool_box/tree/main/tool_box/concert_planner" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Chess Server -->
+        <article class="card" style="--card-accent: #fbbf24">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="6"  width="6" height="8" rx="1" fill="#fbbf24"/>
+              <rect x="21" y="6"  width="6" height="8" rx="1" fill="#fbbf24"/>
+              <rect x="32" y="6"  width="6" height="8" rx="1" fill="#fbbf24"/>
+              <rect x="12" y="12" width="24" height="20" rx="2" fill="#fbbf24" opacity="0.75"/>
+              <rect x="8"  y="32" width="32" height="6"  rx="2" fill="#fbbf24"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Chess Server</h3>
+          <p class="card-desc">Web app for recording chess games and tracking persistent ELO ratings with a live stats dashboard.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">Flask</span>
+            <span class="badge">HTML</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/chess_server" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- RL Flappy Bird -->
+        <article class="card" style="--card-accent: #4ade80">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="28" width="8" height="16" rx="1" fill="#4ade80" opacity="0.5"/>
+              <rect x="2" y="26" width="12" height="4" rx="1" fill="#4ade80" opacity="0.8"/>
+              <rect x="36" y="4" width="8" height="16" rx="1" fill="#4ade80" opacity="0.5"/>
+              <rect x="34" y="18" width="12" height="4" rx="1" fill="#4ade80" opacity="0.8"/>
+              <ellipse cx="23" cy="22" rx="7" ry="5" fill="#4ade80"/>
+              <ellipse cx="20" cy="25" rx="4" ry="2.5" fill="#4ade80" opacity="0.55"/>
+              <circle cx="27" cy="20" r="1.5" fill="#0d1117"/>
+            </svg>
+          </div>
+          <h3 class="card-title">RL Flappy Bird</h3>
+          <p class="card-desc">Reinforcement learning agent that masters Flappy Bird through value iteration and ε-greedy exploration.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">matplotlib</span>
+            <span class="badge">Reinforcement Learning</span>
+            <span class="badge">value iteration</span>
+            <span class="badge">ε-greedy</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/RL-flappy-bird" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- RL Chrome Dino -->
+        <article class="card" style="--card-accent: #67e8f9">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="16" width="18" height="16" rx="4" fill="#67e8f9" opacity="0.8"/>
+              <rect x="30" y="8"  width="14" height="12" rx="3" fill="#67e8f9"/>
+              <circle cx="40" cy="12" r="2" fill="#0d1117"/>
+              <rect x="22" y="30" width="5"  height="10" rx="2" fill="#67e8f9" opacity="0.7"/>
+              <rect x="30" y="30" width="5"  height="10" rx="2" fill="#67e8f9" opacity="0.7"/>
+              <rect x="36" y="18" width="8"  height="4"  rx="2" fill="#67e8f9" opacity="0.45"/>
+            </svg>
+          </div>
+          <h3 class="card-title">RL Chrome Dino</h3>
+          <p class="card-desc">Reinforcement learning agent that plays the Chrome offline Dino Run game via Selenium automation.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">Selenium</span>
+            <span class="badge">Reinforcement Learning</span>
+            <span class="badge">value iteration</span>
+            <span class="badge">ε-greedy</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/RL-chrome-dino" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Grande Illusion -->
+        <article class="card" style="--card-accent: #e879f9">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- pistol grip handle -->
+              <path d="M2 16 C2 12 6 10 10 10 L16 10 L16 22 L10 22 C8 22 6 24 6 28 L6 36 C6 38 4 38 3 36 L2 28 Z"
+                    fill="#e879f9" opacity="0.25" stroke="#e879f9" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- blade: wide at handle, tapering to point -->
+              <path d="M14 10 L46 18 L14 22 Z"
+                    fill="#e879f9" opacity="0.35" stroke="#e879f9" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- teeth along bottom edge of blade -->
+              <polyline points="14,22 18,26 22,22 26,26 30,22 34,26 38,22 42,20 46,18"
+                        fill="none" stroke="#e879f9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Grande Illusion</h3>
+          <p class="card-desc">Robotic "sawing a woman in half" illusion — Arduino-controlled servo legs driven by motion-captured foot angles.</p>
+          <div class="card-badges">
+            <span class="badge">Robotics</span>
+            <span class="badge">C++</span>
+            <span class="badge">Arduino</span>
+            <span class="badge">SketchUp</span>
+          </div>
+          <a class="card-link" href="https://github.com/SylvestreSakti/Grande-Illusion" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Color Pen Prediction -->
+        <article class="card" style="--card-accent: #f472b6">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- holder cup -->
+              <path d="M10 34 L12 44 H36 L38 34 Z" fill="#f472b6" opacity="0.2" stroke="#f472b6" stroke-width="1.5" stroke-linejoin="round"/>
+              <line x1="10" y1="34" x2="38" y2="34" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- pen 1 (pink) -->
+              <rect x="14" y="8"  width="4" height="26" rx="2" fill="#f472b6"/>
+              <polygon points="14,8 18,8 16,3" fill="#f472b6"/>
+              <!-- pen 2 (green) -->
+              <rect x="20" y="6"  width="4" height="28" rx="2" fill="#34d399"/>
+              <polygon points="20,6 24,6 22,1" fill="#34d399"/>
+              <!-- pen 3 (blue) -->
+              <rect x="26" y="9"  width="4" height="25" rx="2" fill="#60a5fa"/>
+              <polygon points="26,9 30,9 28,4" fill="#60a5fa"/>
+              <!-- pen 4 (orange, partially hidden) -->
+              <rect x="31" y="11" width="4" height="23" rx="2" fill="#fb923c" opacity="0.7"/>
+              <polygon points="31,11 35,11 33,6" fill="#fb923c" opacity="0.7"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Color Pen Prediction</h3>
+          <p class="card-desc">Electronic magic trick — an Arduino with a force sensor guesses a hidden pen color, revealed via an Android app over Bluetooth.</p>
+          <div class="card-badges">
+            <span class="badge">Java</span>
+            <span class="badge">C++</span>
+            <span class="badge">Arduino</span>
+            <span class="badge">Android</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/Color-Pen-Prediction" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Autonomous Aircraft -->
+        <article class="card" style="--card-accent: #38bdf8">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="18" width="12" height="12" rx="3" fill="#38bdf8"/>
+              <line x1="24" y1="24" x2="8"  y2="8"  stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="24" y1="24" x2="40" y2="8"  stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="24" y1="24" x2="8"  y2="40" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="24" y1="24" x2="40" y2="40" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="8"  cy="8"  rx="7" ry="2.5" fill="#38bdf8" opacity="0.45"/>
+              <ellipse cx="40" cy="8"  rx="7" ry="2.5" fill="#38bdf8" opacity="0.45"/>
+              <ellipse cx="8"  cy="40" rx="7" ry="2.5" fill="#38bdf8" opacity="0.45"/>
+              <ellipse cx="40" cy="40" rx="7" ry="2.5" fill="#38bdf8" opacity="0.45"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Autonomous Aircraft</h3>
+          <p class="card-desc">Simulation of an aerial transportation network using autonomously controlled VTOL drones.</p>
+          <div class="card-badges">
+            <span class="badge">Java</span>
+            <span class="badge">Python</span>
+            <span class="badge">DJI</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/Autonomous-Aircraft" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- photo2drawing -->
+        <article class="card" style="--card-accent: #e2b875">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="8" width="22" height="18" rx="2" fill="none" stroke="#e2b875" stroke-width="2" opacity="0.55"/>
+              <circle cx="8" cy="14" r="2.5" fill="#e2b875" opacity="0.45"/>
+              <polyline points="2,22 8,16 14,20 19,13 24,20 24,26 2,26" fill="#e2b875" opacity="0.25"/>
+              <line x1="27" y1="17" x2="33" y2="17" stroke="#e2b875" stroke-width="2" stroke-linecap="round"/>
+              <polyline points="30,14 33,17 30,20" stroke="#e2b875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <line x1="36" y1="9"  x2="46" y2="19" stroke="#e2b875" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="36" y1="13" x2="44" y2="21" stroke="#e2b875" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="38" y1="8"  x2="46" y2="16" stroke="#e2b875" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="36" y1="19" x2="42" y2="25" stroke="#e2b875" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="38" y1="22" x2="44" y2="28" stroke="#e2b875" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card-title">photo2drawing</h3>
+          <p class="card-desc">Converts photos into pencil-style drawings using edge detection, region segmentation, and Line Integral Convolution.</p>
+          <div class="card-badges">
+            <span class="badge">MatLab</span>
+            <span class="badge">CV</span>
+            <span class="badge">LIC</span>
+            <span class="badge">GUI</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/photo2drawing" target="_blank" rel="noopener">
             View source
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
           </a>
@@ -386,6 +590,317 @@
         </article>
 
       </div>
+
+      <!-- ── Deep Learning ── -->
+      <h2 class="section-heading section-subheading">// deep learning</h2>
+      <div class="projects-grid">
+
+        <!-- Machine Learning for Solar Energy Prediction -->
+        <article class="card" style="--card-accent: #facc15">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="7" fill="#facc15" opacity="0.8"/>
+              <line x1="14" y1="3"  x2="14" y2="6"  stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="14" y1="22" x2="14" y2="25" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="3"  y1="14" x2="6"  y2="14" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="22" y1="14" x2="25" y2="14" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="6"  y1="6"  x2="8"  y2="8"  stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="22" y1="6"  x2="20" y2="8"  stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="27" y1="44" x2="27" y2="24" stroke="#facc15" stroke-width="1.5"/>
+              <line x1="27" y1="44" x2="46" y2="44" stroke="#facc15" stroke-width="1.5"/>
+              <polyline points="29,40 34,32 39,36 44,26" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Solar Energy Prediction</h3>
+          <p class="card-desc">Stanford CS229 final project.<br>Predicts solar farm power output from weather measurements using regression, gradient boosting, and neural networks.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">MATLAB</span>
+            <span class="badge">scikit-learn</span>
+            <span class="badge">neural network</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/Machine-Learning-for-Solar-Energy-Prediction" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- DeepClimb -->
+        <article class="card" style="--card-accent: #818cf8">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- main hold body: rounded trapezoidal lump -->
+              <path d="M10 34 C8 28 10 18 18 14 C24 11 32 13 36 18 C40 23 39 31 36 35 C33 39 14 39 10 34 Z"
+                    fill="#818cf8" opacity="0.2" stroke="#818cf8" stroke-width="2" stroke-linejoin="round"/>
+              <!-- grip lip / lip ridge -->
+              <path d="M13 30 C14 25 20 21 26 22 C31 23 34 27 33 31"
+                    fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
+              <!-- screw hole in center -->
+              <circle cx="24" cy="28" r="2.5" fill="#818cf8" opacity="0.6"/>
+              <circle cx="24" cy="28" r="1"   fill="#0d1117"/>
+            </svg>
+          </div>
+          <h3 class="card-title">DeepClimb</h3>
+          <p class="card-desc">Stanford CS231n final project.<br>Classifies bouldering difficulty grades on the MoonBoard.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">CNN</span>
+            <span class="badge">Naive Bayes</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/DeepClimb" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Automatic Video Colorization -->
+        <article class="card" style="--card-accent: #fb923c">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="32" height="24" rx="2" fill="none" stroke="#fb923c" stroke-width="2"/>
+              <rect x="3"  y="15" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="3"  y="22" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="3"  y="29" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="40" y="15" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="40" y="22" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="40" y="29" width="5" height="4" rx="1" fill="#fb923c" opacity="0.6"/>
+              <rect x="10" y="14" width="12" height="20" rx="1" fill="#8b949e" opacity="0.35"/>
+              <rect x="26" y="14" width="12" height="20" rx="1" fill="#fb923c" opacity="0.5"/>
+              <line x1="22" y1="24" x2="26" y2="24" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/>
+              <polyline points="24,22 26,24 24,26" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Video Colorization</h3>
+          <p class="card-desc">Stanford CS230 final project.<br>Colorizes black-and-white videos with a GAN pipeline.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">GAN</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/Automatic-Video-Colorization" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- QA-squad -->
+        <article class="card" style="--card-accent: #60a5fa">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2"  y="6"  width="26" height="18" rx="5" fill="#60a5fa" opacity="0.22" stroke="#60a5fa" stroke-width="1.5"/>
+              <path d="M8 24 L6 30 L14 24Z" fill="#60a5fa" opacity="0.22"/>
+              <line x1="8"  y1="13" x2="20" y2="13" stroke="#60a5fa" stroke-width="2"   stroke-linecap="round"/>
+              <line x1="8"  y1="18" x2="16" y2="18" stroke="#60a5fa" stroke-width="2"   stroke-linecap="round" opacity="0.6"/>
+              <rect x="20" y="22" width="26" height="18" rx="5" fill="#60a5fa" opacity="0.65" stroke="#60a5fa" stroke-width="1.5"/>
+              <path d="M40 40 L42 46 L34 40Z" fill="#60a5fa" opacity="0.65"/>
+              <line x1="26" y1="29" x2="38" y2="29" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.8"/>
+              <line x1="26" y1="34" x2="34" y2="34" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="card-title">QA-squad</h3>
+          <p class="card-desc">Stanford CS224N final project.<br>Extractive QA on SQuAD 2.0 using BiDAF enhanced with multi-level embeddings and a custom distance-aware loss.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">NLP</span>
+            <span class="badge">BiDAF</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/QA-squad" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- ── Learning ── -->
+      <h2 class="section-heading section-subheading">// learning</h2>
+      <div class="projects-grid">
+
+        <!-- Advent of Code -->
+        <article class="card" style="--card-accent: #f97316">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- calendar body -->
+              <rect x="5" y="10" width="38" height="33" rx="4" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="2"/>
+              <!-- header band -->
+              <rect x="5" y="10" width="38" height="11" rx="4" fill="#f97316" opacity="0.4"/>
+              <rect x="5" y="17" width="38" height="4" fill="#f97316" opacity="0.4"/>
+              <!-- ring pegs -->
+              <rect x="15" y="5" width="3" height="10" rx="1.5" fill="#f97316"/>
+              <rect x="30" y="5" width="3" height="10" rx="1.5" fill="#f97316"/>
+              <!-- day dots: 3 rows × 4 cols -->
+              <circle cx="14" cy="30" r="2" fill="#f97316"/>
+              <circle cx="22" cy="30" r="2" fill="#f97316"/>
+              <circle cx="30" cy="30" r="2" fill="#f97316"/>
+              <circle cx="38" cy="30" r="2" fill="#f97316" opacity="0.4"/>
+              <circle cx="14" cy="38" r="2" fill="#f97316" opacity="0.6"/>
+              <circle cx="22" cy="38" r="2" fill="#f97316" opacity="0.6"/>
+              <circle cx="30" cy="38" r="2" fill="#f97316" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Advent of Code</h3>
+          <p class="card-desc">My personal solutions to Advent of Code puzzles across multiple years.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">algorithms</span>
+            <span class="badge">puzzles</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/advent_of_code" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- CS231n Assignments -->
+        <article class="card" style="--card-accent: #34d399">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4"  y="10" width="6" height="28" rx="1" fill="#34d399" opacity="0.4"/>
+              <rect x="13" y="14" width="6" height="20" rx="1" fill="#34d399" opacity="0.55"/>
+              <rect x="22" y="18" width="6" height="12" rx="1" fill="#34d399" opacity="0.7"/>
+              <rect x="31" y="20" width="6" height="8"  rx="1" fill="#34d399" opacity="0.85"/>
+              <circle cx="42" cy="18" r="2.5" fill="#34d399"/>
+              <circle cx="42" cy="24" r="2.5" fill="#34d399"/>
+              <circle cx="42" cy="30" r="2.5" fill="#34d399"/>
+              <line x1="37" y1="22" x2="39.5" y2="18" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+              <line x1="37" y1="22" x2="39.5" y2="24" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+              <line x1="37" y1="22" x2="39.5" y2="30" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+              <line x1="37" y1="26" x2="39.5" y2="18" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+              <line x1="37" y1="26" x2="39.5" y2="24" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+              <line x1="37" y1="26" x2="39.5" y2="30" stroke="#34d399" stroke-width="0.8" opacity="0.45"/>
+            </svg>
+          </div>
+          <h3 class="card-title">CS231n Assignments</h3>
+          <p class="card-desc">Stanford CS231n assignments.<br>CNNs, RNNs, attention, and style transfer in PyTorch.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">CNN</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/cs231n-assignments-spring19" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- EKF SLAM Robot -->
+        <article class="card" style="--card-accent: #a78bfa">
+          <div class="card-preview">
+            <img src="https://raw.githubusercontent.com/ColasGael/EKF-nonholonomic-robot/master/demo.gif"
+                 alt="EKF SLAM demo — robot localizing and navigating"
+                 onerror="this.closest('.card-preview').remove()">
+          </div>
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="16" y="28" width="16" height="12" rx="2" fill="#a78bfa" opacity="0.8"/>
+              <rect x="19" y="20" width="10" height="10" rx="2" fill="#a78bfa"/>
+              <circle cx="22" cy="24" r="1.5" fill="#0d1117"/>
+              <circle cx="26" cy="24" r="1.5" fill="#0d1117"/>
+              <circle cx="18" cy="40" r="3"   fill="#a78bfa" opacity="0.6"/>
+              <circle cx="30" cy="40" r="3"   fill="#a78bfa" opacity="0.6"/>
+              <ellipse cx="24" cy="14" rx="10" ry="5" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.5"/>
+              <circle cx="24" cy="14" r="2"   fill="#a78bfa" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="card-title">EKF SLAM Robot</h3>
+          <p class="card-desc">Stanford AA273 assignment.<br>Extended Kalman Filter for simultaneous localization and mapping on a non-holonomic robot with unknown measurement noise.</p>
+          <div class="card-badges">
+            <span class="badge">MATLAB</span>
+            <span class="badge">EKF</span>
+            <span class="badge">SLAM</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/EKF-nonholonomic-robot" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Roomba Navigation -->
+        <article class="card" style="--card-accent: #38bdf8">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="28" r="12" fill="#38bdf8" opacity="0.18" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M16 20 Q24 14 32 20" stroke="#38bdf8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="10" cy="12" r="2"   fill="#38bdf8" opacity="0.7"/>
+              <circle cx="38" cy="10" r="2"   fill="#38bdf8" opacity="0.5"/>
+              <circle cx="6"  cy="30" r="2"   fill="#38bdf8" opacity="0.6"/>
+              <circle cx="42" cy="36" r="2"   fill="#38bdf8" opacity="0.4"/>
+              <circle cx="20" cy="6"  r="1.5" fill="#38bdf8" opacity="0.5"/>
+              <circle cx="36" cy="44" r="1.5" fill="#38bdf8" opacity="0.4"/>
+              <line x1="24" y1="22" x2="24" y2="16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+              <polyline points="21,19 24,16 27,19" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Roomba Navigation</h3>
+          <p class="card-desc">Stanford AA228 final project.<br>POMDP formulation for Roomba localization using particle filtering and bump sensor observations.</p>
+          <div class="card-badges">
+            <span class="badge">Julia</span>
+            <span class="badge">POMDP</span>
+            <span class="badge">particle filter</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/AA228FinalProject" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- Genetic Path Planning -->
+        <article class="card" style="--card-accent: #f87171">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="14" y="8"  width="8" height="8" rx="1" fill="#f87171" opacity="0.15"/>
+              <rect x="28" y="20" width="8" height="8" rx="1" fill="#f87171" opacity="0.15"/>
+              <rect x="10" y="30" width="8" height="8" rx="1" fill="#f87171" opacity="0.15"/>
+              <polyline points="6,44 12,28 24,16 38,36 44,8" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6"  cy="44" r="3" fill="#f87171"/>
+              <circle cx="24" cy="16" r="3" fill="#f87171"/>
+              <circle cx="44" cy="8"  r="3" fill="#f87171"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Genetic Path Planning</h3>
+          <p class="card-desc">Stanford AA222 final project.<br>Single- and multi-objective genetic algorithms for 2D offline path planning with Pareto-optimal front.</p>
+          <div class="card-badges">
+            <span class="badge">Python</span>
+            <span class="badge">Jupyter</span>
+            <span class="badge">Path Planning</span>
+            <span class="badge">Genetic Algorithm</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/Genetic-Algorithm-for-Offline-Path-Planning" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+        <!-- MyFoodora -->
+        <article class="card" style="--card-accent: #94a3b8">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="18" width="28" height="24" rx="3" fill="#94a3b8" opacity="0.25" stroke="#94a3b8" stroke-width="2"/>
+              <path d="M10 24 Q24 16 38 24" fill="#94a3b8" opacity="0.35" stroke="#94a3b8" stroke-width="1.5"/>
+              <path d="M16 18 Q16 10 24 10 Q32 10 32 18" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="28" x2="20" y2="36" stroke="#94a3b8" stroke-width="2"   stroke-linecap="round"/>
+              <line x1="20" y1="24" x2="20" y2="28" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="28" cy="25" rx="2.5" ry="3" fill="#94a3b8" opacity="0.7"/>
+              <line x1="28" y1="28" x2="28" y2="36" stroke="#94a3b8" stroke-width="2"   stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card-title">MyFoodora</h3>
+          <p class="card-desc">CentraleSupélec OOP course project.<br>Object-oriented food ordering and delivery platform with client, restaurant, and manager stakeholders.</p>
+          <div class="card-badges">
+            <span class="badge">Java</span>
+            <span class="badge">OOP</span>
+            <span class="badge">UML</span>
+          </div>
+          <a class="card-link" href="https://github.com/ColasGael/MyFoodora" target="_blank" rel="noopener">
+            View source
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>
+          </a>
+        </article>
+
+      </div>
+
     </section>
   </main>
 
@@ -428,6 +943,7 @@
       resize();
       requestAnimationFrame(frame);
     }
+
   </script>
 
 </body>
